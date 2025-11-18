@@ -1,208 +1,224 @@
-/* Base */
-:root{
-  /* NOUVELLE PALETTE : ROUGE / NOIR / GRIS */
-  
-  /* Dégradé principal (Hero) : Noir profond vers Rouge sang */
-  --gradient-1: linear-gradient(135deg, #0f0f0f 0%, #4a0404 60%, #8a0000 100%);
-  
-  /* Dégradé secondaire (Bannière CTA) : Rouge vif vers Rouge sombre */
-  --gradient-2: linear-gradient(90deg, #d90429 0%, #8d99ae 100%);
-  
-  /* Couleurs unies */
-  --primary-red: #d90429;
-  --text-dark: #111111; /* Noir presque pur */
-  --text-muted: #666666;
-  --bg-light: #f4f4f4;  /* Gris très clair pour le fond du site */
-  
-  /* Effet de verre (inchangé) */
-  --glass: rgba(255,255,255,0.08);
-}
-  
-*{box-sizing:border-box}
+/* =========================================
+   THEME: CYBER DARK (RED & BLACK)
+   ========================================= */
 
-body{
+:root {
+  /* PALETTE SOMBRE */
+  --primary-red: #ff0f2f;       /* Rouge néon vif pour le texte/liens */
+  --primary-red-dark: #8a0000;  /* Rouge sang pour les fonds */
+  
+  --bg-body: #0a0a0a;           /* Noir profond (presque pur) */
+  --bg-card: #161616;           /* Gris très foncé pour les cartes */
+  --bg-card-hover: #1f1f1f;     /* Un peu plus clair au survol */
+  
+  --text-main: #e0e0e0;         /* Blanc cassé pour le texte (moins agressif) */
+  --text-muted: #a0a0a0;        /* Gris clair pour les détails */
+  
+  /* DÉGRADÉS ROUGES */
+  --gradient-hero: linear-gradient(135deg, #000000 0%, #2b0000 100%);
+  --gradient-red: linear-gradient(90deg, #d90429 0%, #ef233c 100%);
+  
+  /* EFFETS */
+  --glass: rgba(20, 20, 20, 0.8);
+  --border-color: #333;
+}
+
+/* --- GLOBAL --- */
+*{ box-sizing: border-box; }
+
+body {
   font-family: 'Poppins', sans-serif;
-  color: var(--text-dark);
-  margin:0;
-  /* Fond gris clair propre au lieu du bleu pâle */
-  background: linear-gradient(180deg, #f0f0f0 0%, #ffffff 100%);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  scroll-behavior:smooth;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  margin: 0;
+  line-height: 1.6;
+  /* Force le fond sombre partout */
+  background: var(--bg-body) !important; 
 }
-  
-/* NAVBAR */
-#mainNavbar{
+
+/* Suppression du bleu Bootstrap par défaut */
+a { 
+  color: var(--primary-red); 
+  text-decoration: none; 
+  transition: color 0.2s;
+}
+a:hover { 
+  color: #ff5c70; /* Rouge plus clair au survol */
+  text-decoration: underline;
+}
+
+/* --- BOOTSTRAP OVERRIDES (Important pour CV/Portfolio) --- */
+/* Transforme tous les textes "text-primary" (bleus) en Rouge */
+.text-primary { color: var(--primary-red) !important; }
+
+/* Transforme les textes "muted" (gris) pour qu'ils soient lisibles sur le noir */
+.text-muted { color: var(--text-muted) !important; }
+
+/* Force les titres en blanc ou rouge */
+h1, h2, h3, h4, h5, h6 { color: #fff; font-weight: 600; }
+
+/* --- NAVBAR --- */
+#mainNavbar {
   background: transparent;
-  transition: background 300ms ease, box-shadow 300ms ease, transform 300ms ease;
-  padding: 0.9rem 0;
+  padding: 1rem 0;
+  transition: all 0.3s ease;
 }
-#mainNavbar.scrolled{
-  background: rgba(20, 20, 20, 0.8); /* Fond sombre translucide au scroll */
-  backdrop-filter: blur(8px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+#mainNavbar.scrolled,
+.body-light #mainNavbar { /* Même sur les autres pages, on garde le sombre */
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #333;
 }
-.navbar-brand{ color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-.nav-link{ color: rgba(255,255,255,0.9) !important; margin-right: .5rem; }
-.nav-link.active{ font-weight:600; text-decoration:underline; color: #fff !important; }
+.navbar-brand { 
+  color: #fff !important; 
+  font-weight: 700; 
+  text-transform: uppercase; 
+  letter-spacing: 1px;
+}
+.nav-link { color: #ccc !important; font-size: 0.95rem; }
+.nav-link:hover, .nav-link.active { color: var(--primary-red) !important; }
 
-/* --- CORRECTION POUR LES PAGES CLAIRES (CV, Portfolio) --- */
-.body-light #mainNavbar {
-  /* Sur fond blanc, on met une navbar sombre pour le contraste, ou grise claire */
-  background: rgba(255, 255, 255, 0.95); 
-  backdrop-filter: blur(6px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-/* On force les liens en NOIR sur les pages claires */
-.body-light .navbar-brand { color: var(--text-dark); text-shadow: none; }
-.body-light .nav-link { color: var(--text-dark) !important; }
-.body-light .nav-link.active { color: var(--primary-red) !important; font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--primary-red); }
-
-/* Hero Section */
-.hero{
+/* --- HERO SECTION --- */
+.hero {
   min-height: 90vh;
-  padding-top:4.5rem;
-  background: var(--gradient-1);
-  color: #fff;
-  position:relative;
-  overflow:hidden;
+  padding-top: 5rem;
+  background: var(--gradient-hero);
+  display: flex; 
+  align-items: center;
+  position: relative;
 }
-.section-gradient{
-  background: var(--gradient-1);
-  background-size: 400% 400%;
-  animation: gradientMove 12s ease infinite;
+
+/* Animation de fond subtile */
+.section-gradient {
+  background: radial-gradient(circle at center, #2a0a0a 0%, #000000 100%);
 }
-.section-gradient-alt{
-  /* Bannière "Tu veux voir mes projets ?" en Rouge */
-  background: linear-gradient(90deg, #ef233c 0%, #d90429 100%);
-  background-size: 200% 200%;
-  animation: gradientMove 14s ease infinite;
+.section-gradient-alt { /* Bannière CTA */
+  background: var(--gradient-red);
+  color: white !important;
 }
-@keyframes gradientMove{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
-}
-  
-/* Profile card */
-.profile-card{
-  background: rgba(255,255,255,0.1); /* Plus transparent */
-  padding: 1.6rem 1.4rem;
-  border-radius: 14px;
-  display:inline-block;
-  width: 100%;
-  max-width: 320px;
-  transition: transform 300ms ease, box-shadow 300ms ease;
-  border: 1px solid rgba(255,255,255,0.1);
-}
-.profile-card:hover{ transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.5); }
-.profile-img{ width:120px; height:120px; object-fit:cover; border-radius:50%; border: 4px solid rgba(255,255,255,0.2); }
-  
-/* Buttons */
-.btn-primary{
-  /* Bouton Rouge */
-  background: linear-gradient(90deg, #ef233c 0%, #d90429 100%);
+
+/* --- BUTTONS --- */
+.btn-primary {
+  background: var(--primary-red);
   border: none;
-  box-shadow: 0 8px 22px rgba(217, 4, 41, 0.3); /* Ombre rouge */
-  padding: 10px 18px;
-  transition: transform 180ms ease, box-shadow 180ms ease;
-  color: #fff;
+  color: white;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(217, 4, 41, 0.4); /* Lueur rouge */
+  transition: all 0.3s;
 }
-.btn-primary:hover{ 
-    transform: translateY(-3px); 
-    box-shadow:0 18px 30px rgba(217, 4, 41, 0.4);
-    background: linear-gradient(90deg, #d90429 0%, #b8001f 100%);
+.btn-primary:hover {
+  background: #b00020;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(217, 4, 41, 0.6);
 }
-.btn-outline-light{
-  color: #fff;
-  border-color: rgba(255,255,255,0.4);
+.btn-outline-light {
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
 }
-.btn-outline-light:hover{
-  background: #fff;
-  color: var(--text-dark);
+.btn-outline-light:hover {
+  background: white;
+  color: black;
 }
-  
-/* Info cards */
-.info-card{
+/* Bouton outline primary (souvent bleu) -> Rouge */
+.btn-outline-primary {
+  color: var(--primary-red);
+  border-color: var(--primary-red);
+}
+.btn-outline-primary:hover {
+  background-color: var(--primary-red);
+  border-color: var(--primary-red);
+  color: white;
+}
+
+/* --- CARTES (CV, Portfolio, Info) --- */
+.card, .info-card, .timeline-item, .sticky-card {
+  background-color: var(--bg-card) !important; /* Fond gris foncé */
+  border: 1px solid #2a2a2a; /* Bordure subtile */
+  color: var(--text-main);
   border-radius: 12px;
-  background: #fff; /* Fond blanc solide */
-  color: var(--text-dark); /* Texte noir */
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  border-bottom: 3px solid var(--primary-red); /* Petite touche rouge en bas */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
 }
-  
-/* Cards in portfolio */
-.card{ border-radius: 12px; border: none; background: #fff; }
-.hover-raise{ transition: transform 260ms ease, box-shadow 260ms ease; }
-.hover-raise:hover{ 
-    transform: translateY(-8px); 
-    box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+.info-card { padding: 1.5rem; height: 100%; }
+
+/* Effet survol cartes portfolio */
+.hover-raise { transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; }
+.hover-raise:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 15, 47, 0.15); /* Légère lueur rouge */
+  border-color: var(--primary-red);
 }
-/* Petite ligne rouge sur les cartes au survol (optionnel) */
-.hover-raise:hover .card-body {
-    border-bottom: 3px solid var(--primary-red);
-    border-radius: 0 0 12px 12px;
+
+/* --- TIMELINE (CV) --- */
+.timeline-item {
+  margin-bottom: 1rem;
+  padding: 1.5rem;
 }
-  
-/* Timeline & CV */
-.sticky-card{ position: sticky; top: 110px; border-radius: 12px; overflow: hidden; border:none; box-shadow: 0 6px 20px rgba(0,0,0,0.05); }
-.timeline-item{ 
-    background: #fff; 
-    padding: 14px; 
-    border-radius: 8px; 
-    margin-bottom: 8px; 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    border-left: 4px solid var(--primary-red); /* Ligne verticale rouge pour la timeline */
+/* Petite ligne rouge décorative à gauche des items de timeline */
+.timeline-item {
+  border-left: 3px solid var(--primary-red);
 }
-  
-/* Footer */
-.site-footer{ background: transparent; color: var(--text-dark); margin-top: 2rem; }
-.site-footer a{ color: var(--primary-red); text-decoration: none; font-weight: 600; }
-.site-footer a:hover{ text-decoration: underline; }
-  
-/* Back to top button */
-#backToTop{
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  width:44px; height:44px;
-  border-radius: 10px;
-  border:none;
-  display:none;
-  align-items:center; justify-content:center;
-  cursor:pointer;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.3);
-  /* Dégradé Rouge pour le bouton */
-  background: linear-gradient(135deg, #ef233c, #8a0000);
-  color:#fff;
-  z-index: 1200;
+
+/* --- PROFILE CARD --- */
+.profile-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 2rem;
+  border-radius: 16px;
+  backdrop-filter: blur(5px);
 }
-  
-/* Reveal animation helpers */
-.reveal{
-  opacity:0;
-  transform: translateY(12px) scale(0.995);
-  transition: opacity 600ms ease, transform 600ms cubic-bezier(.2,.9,.25,1);
+.profile-img {
+  border: 3px solid var(--primary-red); /* Bordure photo rouge */
+  border-radius: 50%;
+  width: 120px; height: 120px; object-fit: cover;
 }
-.reveal.visible{ opacity:1; transform:none; }
-.reveal.delay-1{ transition-delay: 120ms; }
-.reveal.delay-2{ transition-delay: 220ms; }
-.reveal.delay-3{ transition-delay: 320ms; }
-.reveal.delay-4{ transition-delay: 420ms; }
-.reveal.delay-5{ transition-delay: 520ms; }
-  
-/* Name Gradient (Sur le fond noir) */
-.name-gradient{
-  /* Blanc vers un gris argenté */
-  background: linear-gradient(90deg, #ffffff 0%, #adadad 100%);
+/* Icônes réseaux sociaux */
+.social-btn { color: #fff; transition: 0.2s; }
+.social-btn:hover { color: var(--primary-red); }
+
+/* --- FOOTER --- */
+.site-footer {
+  border-top: 1px solid #222;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  color: #666;
+}
+
+/* --- BACK TO TOP --- */
+#backToTop {
+  position: fixed; bottom: 20px; right: 20px;
+  width: 45px; height: 45px;
+  background: var(--primary-red);
+  color: white;
+  border: none; border-radius: 8px;
+  cursor: pointer;
+  display: none; /* géré par JS */
+  align-items: center; justify-content: center;
+  z-index: 999;
+  box-shadow: 0 0 15px rgba(255, 15, 47, 0.5);
+}
+#backToTop:hover { background: #b00020; }
+
+/* --- ANIMATIONS --- */
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+
+/* TEXTE GRADIENT NOM (Optionnel : Blanc vers Gris) */
+.name-gradient {
+  background: linear-gradient(to right, #ffffff, #999999);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-weight: 800; /* Plus gras pour ressortir */
 }
-  
-/* Responsiveness tweaks */
-@media (max-width: 991px){
-  .profile-card{ max-width: 260px; margin-left:auto; margin-right:auto; }
-  #mainNavbar{ padding:.6rem 0; }
-  .sticky-card{ position: static; }
+
+/* RESPONSIVE */
+@media (max-width: 991px) {
+  .sticky-card { position: static; }
+  .profile-card { margin: 0 auto 2rem auto; text-align: center; }
 }
