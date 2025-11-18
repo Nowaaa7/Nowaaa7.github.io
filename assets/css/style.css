@@ -1,20 +1,31 @@
 /* Base */
 :root{
-  /* RETOUR AUX COULEURS ORIGINALES */
-  --gradient-1: linear-gradient(135deg,#2b8cff 0%, #ff6bd6 50%, #7a4bff 100%);
-  --gradient-2: linear-gradient(90deg, rgba(43,140,255,0.95), rgba(255,107,214,0.92));
-  --glass: rgba(255,255,255,0.06);
-  --text-dark: #0b1220;
-  --muted: #6c757d;
-  --card-bg: rgba(255,255,255,0.85);
+  /* NOUVELLE PALETTE : ROUGE / NOIR / GRIS */
+  
+  /* Dégradé principal (Hero) : Noir profond vers Rouge sang */
+  --gradient-1: linear-gradient(135deg, #0f0f0f 0%, #4a0404 60%, #8a0000 100%);
+  
+  /* Dégradé secondaire (Bannière CTA) : Rouge vif vers Rouge sombre */
+  --gradient-2: linear-gradient(90deg, #d90429 0%, #8d99ae 100%);
+  
+  /* Couleurs unies */
+  --primary-red: #d90429;
+  --text-dark: #111111; /* Noir presque pur */
+  --text-muted: #666666;
+  --bg-light: #f4f4f4;  /* Gris très clair pour le fond du site */
+  
+  /* Effet de verre (inchangé) */
+  --glass: rgba(255,255,255,0.08);
 }
   
 *{box-sizing:border-box}
+
 body{
   font-family: 'Poppins', sans-serif;
   color: var(--text-dark);
   margin:0;
-  background: linear-gradient(180deg,#f8f9ff 0%, #fff 100%);
+  /* Fond gris clair propre au lieu du bleu pâle */
+  background: linear-gradient(180deg, #f0f0f0 0%, #ffffff 100%);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   scroll-behavior:smooth;
@@ -27,26 +38,27 @@ body{
   padding: 0.9rem 0;
 }
 #mainNavbar.scrolled{
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(6px);
-  box-shadow: 0 6px 18px rgba(12,18,30,0.06);
+  background: rgba(20, 20, 20, 0.8); /* Fond sombre translucide au scroll */
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
 }
-.navbar-brand{ color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.15); }
-.nav-link{ color: rgba(255,255,255,0.92) !important; margin-right: .5rem; }
-.nav-link.active{ font-weight:600; text-decoration:underline }
+.navbar-brand{ color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+.nav-link{ color: rgba(255,255,255,0.9) !important; margin-right: .5rem; }
+.nav-link.active{ font-weight:600; text-decoration:underline; color: #fff !important; }
 
-/* CORRECTION IMPORTANTE : Pour voir la navbar sur les pages à fond blanc */
+/* --- CORRECTION POUR LES PAGES CLAIRES (CV, Portfolio) --- */
 .body-light #mainNavbar {
-  background: rgba(255,255,255,0.06); /* Ou une couleur plus sombre si nécessaire pour le contraste */
+  /* Sur fond blanc, on met une navbar sombre pour le contraste, ou grise claire */
+  background: rgba(255, 255, 255, 0.95); 
   backdrop-filter: blur(6px);
-  box-shadow: 0 6px 18px rgba(12,18,30,0.06);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
-/* On force les liens en noir sur les pages claires */
+/* On force les liens en NOIR sur les pages claires */
 .body-light .navbar-brand { color: var(--text-dark); text-shadow: none; }
 .body-light .nav-link { color: var(--text-dark) !important; }
-.body-light .nav-link.active { color: var(--text-dark) !important; font-weight: 600; text-decoration: underline; }
+.body-light .nav-link.active { color: var(--primary-red) !important; font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--primary-red); }
 
-/* Hero */
+/* Hero Section */
 .hero{
   min-height: 90vh;
   padding-top:4.5rem;
@@ -61,7 +73,8 @@ body{
   animation: gradientMove 12s ease infinite;
 }
 .section-gradient-alt{
-  background: linear-gradient(90deg, rgba(42,139,255,0.9), rgba(138,75,255,0.85));
+  /* Bannière "Tu veux voir mes projets ?" en Rouge */
+  background: linear-gradient(90deg, #ef233c 0%, #d90429 100%);
   background-size: 200% 200%;
   animation: gradientMove 14s ease infinite;
 }
@@ -73,53 +86,81 @@ body{
   
 /* Profile card */
 .profile-card{
-  background: rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.1); /* Plus transparent */
   padding: 1.6rem 1.4rem;
   border-radius: 14px;
   display:inline-block;
   width: 100%;
   max-width: 320px;
   transition: transform 300ms ease, box-shadow 300ms ease;
+  border: 1px solid rgba(255,255,255,0.1);
 }
-.profile-card:hover{ transform: translateY(-6px); box-shadow: 0 12px 30px rgba(11,18,32,0.18); }
-.profile-img{ width:120px; height:120px; object-fit:cover; border-radius:50%; border: 4px solid rgba(255,255,255,0.12); }
+.profile-card:hover{ transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.5); }
+.profile-img{ width:120px; height:120px; object-fit:cover; border-radius:50%; border: 4px solid rgba(255,255,255,0.2); }
   
 /* Buttons */
 .btn-primary{
-  background: linear-gradient(90deg,#ff6b6b 0%, #ff4c8a 100%);
+  /* Bouton Rouge */
+  background: linear-gradient(90deg, #ef233c 0%, #d90429 100%);
   border: none;
-  box-shadow: 0 8px 22px rgba(255,92,105,0.16);
+  box-shadow: 0 8px 22px rgba(217, 4, 41, 0.3); /* Ombre rouge */
   padding: 10px 18px;
   transition: transform 180ms ease, box-shadow 180ms ease;
+  color: #fff;
 }
-.btn-primary:hover{ transform: translateY(-3px); box-shadow:0 18px 30px rgba(255,92,105,0.18) }
+.btn-primary:hover{ 
+    transform: translateY(-3px); 
+    box-shadow:0 18px 30px rgba(217, 4, 41, 0.4);
+    background: linear-gradient(90deg, #d90429 0%, #b8001f 100%);
+}
 .btn-outline-light{
   color: #fff;
-  border-color: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.4);
+}
+.btn-outline-light:hover{
+  background: #fff;
+  color: var(--text-dark);
 }
   
-/* Info cards - CORRIGÉ pour la lisibilité */
+/* Info cards */
 .info-card{
   border-radius: 12px;
   background: #fff; /* Fond blanc solide */
   color: var(--text-dark); /* Texte noir */
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  border-bottom: 3px solid var(--primary-red); /* Petite touche rouge en bas */
 }
   
 /* Cards in portfolio */
-.card{ border-radius: 12px; border: none; } /* Ajout border none pour propreté */
+.card{ border-radius: 12px; border: none; background: #fff; }
 .hover-raise{ transition: transform 260ms ease, box-shadow 260ms ease; }
-.hover-raise:hover{ transform: translateY(-8px); box-shadow: 0 18px 40px rgba(12,18,30,0.12) }
+.hover-raise:hover{ 
+    transform: translateY(-8px); 
+    box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+}
+/* Petite ligne rouge sur les cartes au survol (optionnel) */
+.hover-raise:hover .card-body {
+    border-bottom: 3px solid var(--primary-red);
+    border-radius: 0 0 12px 12px;
+}
   
 /* Timeline & CV */
-.sticky-card{ position: sticky; top: 110px; border-radius: 12px; overflow: hidden; }
-.timeline-item{ background: #fff; padding: 14px; border-radius: 8px; margin-bottom: 8px; box-shadow: 0 6px 18px rgba(12,18,30,0.04) }
+.sticky-card{ position: sticky; top: 110px; border-radius: 12px; overflow: hidden; border:none; box-shadow: 0 6px 20px rgba(0,0,0,0.05); }
+.timeline-item{ 
+    background: #fff; 
+    padding: 14px; 
+    border-radius: 8px; 
+    margin-bottom: 8px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-left: 4px solid var(--primary-red); /* Ligne verticale rouge pour la timeline */
+}
   
 /* Footer */
-.site-footer{ background: transparent; color: #0b1220; margin-top: 2rem; }
-.site-footer a{ color: inherit; text-decoration: underline; }
+.site-footer{ background: transparent; color: var(--text-dark); margin-top: 2rem; }
+.site-footer a{ color: var(--primary-red); text-decoration: none; font-weight: 600; }
+.site-footer a:hover{ text-decoration: underline; }
   
-/* Back to top button - OPTIMISÉ (ID unique) */
+/* Back to top button */
 #backToTop{
   position: fixed;
   right: 18px;
@@ -130,8 +171,9 @@ body{
   display:none;
   align-items:center; justify-content:center;
   cursor:pointer;
-  box-shadow: 0 10px 24px rgba(10,20,40,0.12);
-  background: linear-gradient(90deg,#7a4bff,#ff6bd6);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.3);
+  /* Dégradé Rouge pour le bouton */
+  background: linear-gradient(135deg, #ef233c, #8a0000);
   color:#fff;
   z-index: 1200;
 }
@@ -149,11 +191,13 @@ body{
 .reveal.delay-4{ transition-delay: 420ms; }
 .reveal.delay-5{ transition-delay: 520ms; }
   
-/* Subtle text gradient for the name */
+/* Name Gradient (Sur le fond noir) */
 .name-gradient{
-  background: linear-gradient(90deg,#fff 0%, rgba(255,255,255,0.85) 100%);
+  /* Blanc vers un gris argenté */
+  background: linear-gradient(90deg, #ffffff 0%, #adadad 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-weight: 800; /* Plus gras pour ressortir */
 }
   
 /* Responsiveness tweaks */
