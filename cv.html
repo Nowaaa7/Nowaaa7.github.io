@@ -3,16 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Noa Jodry — CV</title>
+  <title>Noa Jodry — CV Étudiant R&T</title>
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <!-- NAV -->
+
   <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand fw-bold" href="index.html">Noa Jodry</a>
@@ -24,70 +25,167 @@
           <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
           <li class="nav-item"><a class="nav-link active" href="cv.html">CV</a></li>
           <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+          <li class="nav-item ms-2 d-none d-lg-block"><a class="btn btn-outline-light btn-sm" href="https://github.com/Nowaaa7" target="_blank" rel="noopener">GitHub</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- CV CONTENT -->
   <main class="container py-5 mt-5">
     <div class="row g-4">
+      
       <div class="col-lg-4">
-        <div class="card sticky-card">
-          <div class="card-body text-center">
-            <img src="assets/img/profile.png" alt="Noa" class="profile-img mb-3">
-            <h4 class="mb-0">Noa Jodry</h4>
-            <p class="text-muted small">Étudiant BUT Réseaux & Télécommunications</p>
-            <p class="small mb-1"><strong>Email :</strong> <span class="text-muted">jodrynoa7@gmail.com</span></p>
-            <p class="small mb-0"><strong>GitHub :</strong> <a href="https://github.com/Nowaaa7" target="_blank" rel="noopener">Nowaaa7</a></p>
+        
+        <div class="card sticky-card border-0 shadow-lg mb-4">
+          <div class="card-body text-center p-4">
+            <img src="assets/img/profile.png" alt="Photo de Noa" class="profile-img mb-3">
+            <h4 class="mb-1 text-white">Noa Jodry</h4>
+            <p class="text-primary fw-bold small text-uppercase">Étudiant R&T - 1ère Année</p>
+            
+            <hr class="border-secondary my-3">
+            
+            <div class="text-start small">
+              <p class="mb-2"><strong class="text-white">Email :</strong> <br><a href="mailto:ton.email@exemple.com" class="text-muted text-decoration-none">ton.email@exemple.com</a></p>
+              <p class="mb-2"><strong class="text-white">Localisation :</strong> <br><span class="text-muted">Béthune, France</span></p>
+              <p class="mb-0"><strong class="text-white">GitHub :</strong> <br><a href="https://github.com/Nowaaa7" target="_blank" class="text-muted text-decoration-none">github.com/Nowaaa7</a></p>
+            </div>
+
+            <div class="mt-4">
+              <a href="assets/img/profile.png" class="btn btn-primary w-100" download>Télécharger CV (PDF)</a>
+            </div>
           </div>
         </div>
 
-        <div class="mt-4 d-none d-lg-block">
-          <h6 class="text-secondary">Compétences</h6>
-          <ul class="list-unstyled small">
-            <li>HTML / CSS / Bootstrap</li>
-            <li>Python, Bash</li>
-            <li>Linux, Cisco Packet Tracer</li>
-            <li>Notions de sécurité réseau</li>
-          </ul>
+        <div class="card border-0 shadow-lg mb-4">
+          <div class="card-body p-4">
+            <h5 class="text-primary mb-3">Compétences Techniques</h5>
+            
+            <h6 class="text-white small fw-bold mt-3">Réseaux & Télécoms</h6>
+            <ul class="list-unstyled small text-muted mb-0">
+              <li>• Cisco Packet Tracer (CLI)</li>
+              <li>• Modèle OSI & TCP/IP</li>
+              <li>• Adressage IPv4 & Subnetting</li>
+              <li>• Câblage & Brassage</li>
+            </ul>
+
+            <h6 class="text-white small fw-bold mt-3">Système & OS</h6>
+            <ul class="list-unstyled small text-muted mb-0">
+              <li>• Linux (Debian/Ubuntu) - CLI</li>
+              <li>• Windows 10/11 & notions Server</li>
+              <li>• Virtualisation (VirtualBox)</li>
+            </ul>
+
+            <h6 class="text-white small fw-bold mt-3">Développement</h6>
+            <ul class="list-unstyled small text-muted mb-0">
+              <li>• Python (Scripts & Algo)</li>
+              <li>• Bash (Automatisation simple)</li>
+              <li>• HTML5 / CSS3 / Bootstrap</li>
+            </ul>
+          </div>
         </div>
+
+        <div class="card border-0 shadow-lg">
+          <div class="card-body p-4">
+            <h5 class="text-primary mb-3">Langues & Atouts</h5>
+            
+            <p class="small mb-1"><strong class="text-white">Anglais :</strong> <span class="text-muted">Niveau B2 (Technique)</span></p>
+            <p class="small mb-1"><strong class="text-white">Espagnol :</strong> <span class="text-muted">Niveau Scolaire</span></p>
+            
+            <hr class="border-secondary my-3">
+            
+            <h6 class="text-white small fw-bold">Savoir-être</h6>
+            <div class="d-flex flex-wrap gap-2 mt-2">
+              <span class="badge bg-dark border border-secondary text-light">Curiosité</span>
+              <span class="badge bg-dark border border-secondary text-light">Travail d'équipe</span>
+              <span class="badge bg-dark border border-secondary text-light">Rigueur</span>
+              <span class="badge bg-dark border border-secondary text-light">Autonomie</span>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <div class="col-lg-8">
-        <section class="mb-4 reveal">
-          <h3 class="text-primary">Formation</h3>
+        
+        <section class="mb-5 reveal">
+          <h2 class="h3 text-white border-left border-primary ps-3 border-3">À propos</h2>
+          <p class="text-muted mt-3">
+            Actuellement étudiant en 1ère année de BUT Réseaux et Télécommunications à l'IUT de Béthune. Passionné par l'informatique et la cybersécurité, je cherche à approfondir mes connaissances à travers des projets concrets. Je suis à la recherche d'un stage de découverte ou d'un emploi saisonnier pour mettre en pratique ma rigueur et ma soif d'apprendre.
+          </p>
+        </section>
+
+        <section class="mb-5 reveal delay-1">
+          <h2 class="h3 text-white border-left border-primary ps-3 border-3 mb-4">Formation</h2>
           <div class="timeline">
+            
             <div class="timeline-item">
-              <h5>BUT Réseaux & Télécommunications — IUT de Béthune</h5>
-              <p class="small text-muted mb-0">2024 — 2027</p>
-              <p class="mt-2">Parcours orienté réseaux, protocoles, administration système et sécurité.</p>
+              <h5 class="text-white">BUT Réseaux & Télécommunications</h5>
+              <p class="text-primary small mb-1">IUT de Béthune | 2024 — Présent</p>
+              <p class="small text-muted">
+                Formation axée sur l'administration réseau, la sécurité des systèmes et les télécommunications.
+                <br><strong>Modules clés :</strong> Fondamentaux réseaux, Administration Système Linux, Initiation au développement, Supports de transmission.
+              </p>
             </div>
 
-            <div class="timeline-item mt-3">
-              <h5>Baccalauréat Général — NSI & Mathématiques</h5>
-              <p class="small text-muted mb-0">2024</p>
+            <div class="timeline-item mt-4">
+              <h5 class="text-white">Baccalauréat Général</h5>
+              <p class="text-primary small mb-1">Lycée [Nom du Lycée] | 2024</p>
+              <p class="small text-muted">Spécialités : Numérique et Sciences Informatiques (NSI) & Mathématiques. Mention Bien.</p>
             </div>
+
           </div>
         </section>
 
-        <section class="mb-4 reveal delay-1">
-          <h3 class="text-primary">Expériences & Projets</h3>
-          <ul>
-            <li><strong>SAE 1.01 — Découverte du réseau local</strong> — Mise en place d’un réseau simple, adressage IP et tests de connectivité.</li>
-            <li class="mt-2"><strong>Script Python d’analyse réseau (exemple)</strong> — Script de parsing de logs et génération de rapports.</li>
-          </ul>
+        <section class="mb-5 reveal delay-2">
+          <h2 class="h3 text-white border-left border-primary ps-3 border-3 mb-4">Projets Académiques (SAE)</h2>
+          
+          <div class="card mb-3 hover-raise">
+            <div class="card-body">
+              <h5 class="card-title text-white">SAE 1.01 : Initialisation d'un réseau d'entreprise</h5>
+              <p class="card-text small text-muted">
+                Mise en place d'une infrastructure réseau physique et logique pour une petite structure.
+              </p>
+              <ul class="small text-muted mb-0">
+                <li>• Réalisation du plan d'adressage IP (VLSM).</li>
+                <li>• Configuration de base des routeurs et commutateurs Cisco.</li>
+                <li>• Câblage et tests de connectivité.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card mb-3 hover-raise">
+            <div class="card-body">
+              <h5 class="card-title text-white">SAE 1.02 : Administration Système Linux</h5>
+              <p class="card-text small text-muted">
+                Installation et configuration d'un poste de travail sous Linux (Debian/Ubuntu).
+              </p>
+              <ul class="small text-muted mb-0">
+                <li>• Partitionnement et gestion des systèmes de fichiers.</li>
+                <li>• Gestion des utilisateurs, des groupes et des droits (chmod).</li>
+                <li>• Scripting Bash pour l'automatisation de tâches simples.</li>
+              </ul>
+            </div>
+          </div>
+
         </section>
 
-        <section class="mb-4 reveal delay-2">
-          <h3 class="text-primary">Centres d'intérêt</h3>
-          <p class="small">Cybersécurité, programmation, technologies web, jeux vidéo.</p>
+        <section class="reveal delay-3">
+          <h2 class="h3 text-white border-left border-primary ps-3 border-3 mb-4">Expériences</h2>
+          
+          <div class="timeline-item">
+            <h5 class="text-white">Job d'été / Stage (Exemple)</h5>
+            <p class="text-primary small mb-1">Nom de l'entreprise | Été 2024</p>
+            <p class="small text-muted">
+              Description de la mission. (Même si ce n'est pas de l'informatique, indique-le pour montrer ton sérieux).
+              <br>Ex: Travail en équipe, respect des horaires, relation client.
+            </p>
+          </div>
         </section>
 
-        <section class="mt-4 reveal delay-3">
-          <a href="assets/img/profile.png" class="btn btn-primary me-2" download>Télécharger la photo</a>
-          <a href="index.html" class="btn btn-outline-primary">Retour à l'accueil</a>
+        <section class="mt-5 text-center reveal delay-4">
+           <a href="portfolio.html" class="btn btn-outline-primary">Voir les détails de mes compétences</a>
         </section>
+
       </div>
     </div>
   </main>
