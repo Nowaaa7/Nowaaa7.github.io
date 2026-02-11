@@ -23,9 +23,36 @@ html { scroll-behavior: smooth; }
 
 body {
     font-family: var(--font-main);
-    background-color: var(--bg-dark) !important;
-    color: var(--text-light) !important; /* Force le texte en blanc */
+    color: var(--text-light);
     overflow-x: hidden;
+
+    /* --- FOND ANIMÉ GLOBAL --- */
+    /* Dégradé : Noir Pur -> Noir Rougeâtre très sombre -> Noir Pur */
+    background: linear-gradient(-45deg, #000000, #0a0002, #1f0005, #000000);
+    background-size: 400% 400%;
+    animation: dark-breath 20s ease infinite; /* Animation plus lente (20s) pour la sobriété */
+    min-height: 100vh;
+}
+
+/* L'animation de respiration */
+@keyframes dark-breath {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* La grille "Réseau" qui couvre tout le site (fixe) */
+body::before {
+    content: "";
+    position: fixed; /* Reste fixe quand tu scrolles */
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Grille très fine et à peine visible */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: -1; /* Derrière tout le contenu */
 }
 
 /* On force tous les paragraphes et titres à hériter de la couleur blanche */
@@ -134,17 +161,8 @@ a:hover { color: var(--secondary-color); }
     min-height: 100vh;
     padding-top: 80px;
     position: relative;
-    overflow: hidden;
-    
-    /* COULEURS DE L'ANIMATION */
-    /* Noir profond / Gris très sombre / Rouge sang foncé / Noir */
-    background: linear-gradient(-45deg, #000000, #1a1a1a, #4a000e, #000000);
-    
-    /* On agrandit le fond pour pouvoir le faire bouger */
-    background-size: 400% 400%;
-    
-    /* L'animation : elle dure 15 secondes et tourne en boucle */
-    animation: dark-breath 15s ease infinite;
+    /* Plus de background ici, c'est le body qui gère */
+    background: transparent; 
 }
 
 /* Définition de l'animation */
@@ -158,19 +176,6 @@ a:hover { color: var(--secondary-color); }
     100% {
         background-position: 0% 50%;
     }
-}
-
-/* Optionnel : Ajoute une fine grille par-dessus pour l'effet "Réseau/R&T" */
-.hero::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 40px 40px; /* Taille des carreaux de la grille */
-    pointer-events: none; /* Laisse passer les clics */
-    z-index: 0;
 }
 
 /* On s'assure que le texte passe bien DEVANT le fond */
@@ -195,12 +200,14 @@ a:hover { color: var(--secondary-color); }
 /* =========================================
    CARTES & ÉLÉMENTS GRAPHIQUES
    ========================================= */
-.card {
-    background-color: var(--bg-card);
+.card, .profile-card, .info-card {
+    /* Fond noir semi-transparent pour voir l'animation derrière */
+    background-color: rgba(20, 20, 20, 0.7) !important; 
+    backdrop-filter: blur(5px); /* Floute l'arrière-plan */
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    color: var(--text-light) !important; /* Force le texte blanc dans les cartes */
+    color: var(--text-light) !important;
 }
 
 .profile-card, .sticky-card {
@@ -300,7 +307,8 @@ a:hover { color: var(--secondary-color); }
    FOOTER & UTILITAIRES
    ========================================= */
 .site-footer {
-    background: rgba(0, 0, 0, 0.2);
+    /* Fond transparent pour voir l'animation jusqu'en bas */
+    background: transparent; 
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     font-size: 0.9rem;
     color: var(--text-muted) !important;
