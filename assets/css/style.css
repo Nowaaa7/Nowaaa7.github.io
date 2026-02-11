@@ -2,20 +2,21 @@
    VARIABLES & THÈMES
    ========================================= */
 :root {
-    /* --- TYPOGRAPHIE (C'est la ligne qui manquait !) --- */
+    /* --- TYPOGRAPHIE --- */
     --font-main: 'Poppins', sans-serif;
 
     /* --- THÈME PAR DÉFAUT (SOMBRE / ROUGE) --- */
     --primary-color: #ff0f2f;       /* Rouge Néon */
     --secondary-color: #d0001f;     /* Rouge Foncé */
     --bg-body: #000000;             /* Noir pur */
-    --bg-card: rgba(20, 20, 20, 0.7); /* Noir transparent */
-    --text-main: #f8f9fa;           /* Blanc */
-    --text-muted: #b0b3b8;          /* Gris clair */
+    --bg-card: rgba(20, 20, 20, 0.7); 
+    --text-main: #f8f9fa;           
+    --text-muted: #b0b3b8;          
     --border-color: rgba(255, 255, 255, 0.1);
     
-    /* Animation de fond (Sombre) */
-    --bg-gradient: linear-gradient(-45deg, #000000, #0a0002, #1f0005, #000000);
+    /* Animation SOMBRE (Plus visible) */
+    /* On passe du Noir -> Rouge Sang -> Rouge Sombre -> Noir */
+    --bg-gradient: linear-gradient(-45deg, #000000, #2b0005, #5c0011, #000000);
 }
 
 /* --- THÈME CLAIR (BLANC / BLEU FONCÉ) --- */
@@ -23,13 +24,14 @@
     --primary-color: #0056b3;       
     --secondary-color: #004494;     
     --bg-body: #ffffff;             
-    --bg-card: rgba(255, 255, 255, 0.9); 
+    --bg-card: rgba(255, 255, 255, 0.85); 
     --text-main: #212529;           
     --text-muted: #6c757d;          
     --border-color: rgba(0, 0, 0, 0.1);
 
-    /* Animation de fond (Clair) */
-    --bg-gradient: linear-gradient(-45deg, #ffffff, #f0f8ff, #e6f2ff, #ffffff);
+    /* Animation CLAIRE (Plus visible) */
+    /* On passe du Blanc -> Bleu Ciel -> Bleu Doux -> Blanc */
+    --bg-gradient: linear-gradient(-45deg, #ffffff, #d6eaff, #b3d7ff, #ffffff);
 }
 
 /* --- RESET & BASES --- */
@@ -37,15 +39,23 @@ html { scroll-behavior: smooth; }
 
 body {
     font-family: var(--font-main);
-    
-    /* On utilise les variables ici pour que ça change tout seul */
-    background: var(--bg-gradient) !important; 
-    background-size: 400% 400% !important;
     color: var(--text-main) !important;
-    
-    animation: dark-breath 20s ease infinite;
     overflow-x: hidden;
     min-height: 100vh;
+
+    /* APPLICATION DE L'ANIMATION */
+    background: var(--bg-gradient) !important; 
+    background-size: 400% 400% !important;
+    
+    /* Animation accélérée à 12s pour mieux voir le mouvement */
+    animation: dark-breath 12s ease infinite; 
+}
+
+/* Définition du mouvement */
+@keyframes dark-breath {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* On force la couleur des cartes et des textes avec les variables */
