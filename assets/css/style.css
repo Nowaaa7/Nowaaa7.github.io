@@ -1,21 +1,32 @@
 /* =========================================
-   VARIABLES & CONFIGURATION GLOBALE
+   VARIABLES & THÈMES
    ========================================= */
 :root {
-    /* --- PALETTE DE COULEURS (ROUGE CYBER) --- */
-    --primary-color: #ff0f2f; 
-    --secondary-color: #d0001f; 
+    /* --- THÈME PAR DÉFAUT (SOMBRE / ROUGE) --- */
+    --primary-color: #ff0f2f;       /* Rouge Néon */
+    --secondary-color: #d0001f;     /* Rouge Foncé */
+    --bg-body: #000000;             /* Noir pur */
+    --bg-card: rgba(20, 20, 20, 0.7); /* Noir transparent */
+    --text-main: #f8f9fa;           /* Blanc */
+    --text-muted: #b0b3b8;          /* Gris clair */
+    --border-color: rgba(255, 255, 255, 0.1);
     
-    /* Couleurs de fond */
-    --bg-dark: #121212;
-    --bg-card: #1e1e1e;
-    
-    /* Couleurs de texte */
-    --text-light: #f8f9fa;
-    --text-muted: #b0b3b8;
+    /* Animation de fond (Sombre) */
+    --bg-gradient: linear-gradient(-45deg, #000000, #0a0002, #1f0005, #000000);
+}
 
-    /* --- TYPOGRAPHIE --- */
-    --font-main: 'Poppins', sans-serif;
+/* --- THÈME CLAIR (BLANC / BLEU FONCÉ) --- */
+[data-theme="light"] {
+    --primary-color: #0056b3;       /* Bleu Foncé Pro */
+    --secondary-color: #004494;     /* Bleu encore plus foncé */
+    --bg-body: #ffffff;             /* Blanc pur */
+    --bg-card: rgba(255, 255, 255, 0.9); /* Blanc quasi opaque */
+    --text-main: #212529;           /* Noir/Gris très foncé pour le texte */
+    --text-muted: #6c757d;          /* Gris moyen */
+    --border-color: rgba(0, 0, 0, 0.1);
+
+    /* Animation de fond (Clair : Blanc vers Bleu très pâle) */
+    --bg-gradient: linear-gradient(-45deg, #ffffff, #f0f8ff, #e6f2ff, #ffffff);
 }
 
 /* --- RESET & BASES --- */
@@ -23,15 +34,29 @@ html { scroll-behavior: smooth; }
 
 body {
     font-family: var(--font-main);
-    color: var(--text-light);
+    
+    /* On utilise les variables ici pour que ça change tout seul */
+    background: var(--bg-gradient) !important; 
+    background-size: 400% 400% !important;
+    color: var(--text-main) !important;
+    
+    animation: dark-breath 20s ease infinite;
     overflow-x: hidden;
-
-    /* --- FOND ANIMÉ GLOBAL --- */
-    /* Dégradé : Noir Pur -> Noir Rougeâtre très sombre -> Noir Pur */
-    background: linear-gradient(-45deg, #000000, #0a0002, #1f0005, #000000);
-    background-size: 400% 400%;
-    animation: dark-breath 20s ease infinite; /* Animation plus lente (20s) pour la sobriété */
     min-height: 100vh;
+}
+
+/* On force la couleur des cartes et des textes avec les variables */
+.card, .profile-card, .sticky-card, .info-card {
+    background-color: var(--bg-card) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-main) !important;
+}
+
+/* Pour le mode clair, la grille de fond doit être noire (très transparente) et non blanche */
+[data-theme="light"] body::before {
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px) !important;
 }
 
 /* L'animation de respiration */
