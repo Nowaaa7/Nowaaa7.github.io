@@ -3,25 +3,57 @@
    ========================================= */
 
 :root {
-  /* PALETTE SOMBRE */
-  --primary-red: #ff0f2f;       /* Rouge néon vif pour le texte/liens */
-  --primary-red-dark: #8a0000;  /* Rouge sang pour les fonds */
-  
-  --bg-body: #0a0a0a;           /* Noir profond (presque pur) */
-  --bg-card: #161616;           /* Gris très foncé pour les cartes */
-  --bg-card-hover: #1f1f1f;     /* Un peu plus clair au survol */
-  
-  --text-main: #e0e0e0;         /* Blanc cassé pour le texte (moins agressif) */
-  --text-muted: #a0a0a0;        /* Gris clair pour les détails */
-  
-  /* DÉGRADÉS ROUGES */
-  --gradient-hero: linear-gradient(135deg, #000000 0%, #2b0000 100%);
-  --gradient-red: linear-gradient(90deg, #d90429 0%, #ef233c 100%);
-  
-  /* EFFETS */
-  --glass: rgba(20, 20, 20, 0.8);
-  --border-color: #333;
+    /* --- PALETTE DE COULEURS (Nouveau : Bleu Foncé) --- */
+    
+    /* Bleu Roi Principal (remplace le rouge #ff0f2f) */
+    --primary-color: #0d6efd; 
+    
+    /* Bleu plus foncé pour les effets de survol */
+    --secondary-color: #0a58ca; 
+    
+    /* Fond sombre (inchangé) */
+    --bg-dark: #121212;
+    --bg-card: #1e1e1e;
+    --text-light: #f8f9fa;
 }
+
+/* =========================================
+   OVERRIDES (Force le bleu partout)
+   ========================================= */
+
+/* On force tous les éléments "Primaires" en bleu */
+.text-primary { color: var(--primary-color) !important; }
+.bg-primary { background-color: var(--primary-color) !important; }
+.btn-primary { 
+    background-color: var(--primary-color) !important; 
+    border-color: var(--primary-color) !important; 
+}
+
+/* On force tous les éléments "Danger" (Rouge) à devenir BLEUS */
+/* Cela évite de devoir modifier tout ton HTML */
+.text-danger { color: var(--primary-color) !important; }
+.border-danger { border-color: var(--primary-color) !important; }
+.btn-danger { 
+    background-color: var(--primary-color) !important; 
+    border-color: var(--primary-color) !important; 
+}
+
+/* Mise à jour des boutons Outline (contours) */
+.btn-outline-primary {
+    color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+.btn-outline-primary:hover {
+    background-color: var(--primary-color) !important;
+    color: #fff !important;
+}
+
+/* Mise à jour des liens et sélections */
+a { color: var(--primary-color); transition: 0.3s; }
+a:hover { color: var(--secondary-color); }
+::selection { background: var(--primary-color); color: #fff; }
+
+/* La suite de ton CSS (body, navbar, etc.) reste inchangée en dessous... */
 
 /* --- GLOBAL --- */
 *{ box-sizing: border-box; }
