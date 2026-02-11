@@ -127,35 +127,71 @@ a:hover { color: var(--secondary-color); }
 .nav-link:hover::after, .nav-link.active::after { width: 100%; }
 
 /* =========================================
-   SECTIONS HERO & BANNIÈRES
+   SECTIONS HERO (FOND ANIMÉ)
    ========================================= */
+
 .hero {
     min-height: 100vh;
     padding-top: 80px;
     position: relative;
     overflow: hidden;
+    
+    /* COULEURS DE L'ANIMATION */
+    /* Noir profond / Gris très sombre / Rouge sang foncé / Noir */
+    background: linear-gradient(-45deg, #000000, #1a1a1a, #4a000e, #000000);
+    
+    /* On agrandit le fond pour pouvoir le faire bouger */
+    background-size: 400% 400%;
+    
+    /* L'animation : elle dure 15 secondes et tourne en boucle */
+    animation: dark-breath 15s ease infinite;
 }
 
-/* Dégradé de fond principal (Rouge vers Noir) */
-.section-gradient {
-    background: linear-gradient(135deg, var(--bg-dark) 0%, rgba(255, 15, 47, 0.1) 100%);
+/* Définition de l'animation */
+@keyframes dark-breath {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
-/* Dégradé alternatif */
+/* Optionnel : Ajoute une fine grille par-dessus pour l'effet "Réseau/R&T" */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px; /* Taille des carreaux de la grille */
+    pointer-events: none; /* Laisse passer les clics */
+    z-index: 0;
+}
+
+/* On s'assure que le texte passe bien DEVANT le fond */
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Laisse le reste (gradient-alt, name-gradient) inchangé en dessous... */
 .section-gradient-alt {
     background: linear-gradient(to right, var(--bg-dark), rgba(255, 15, 47, 0.2), var(--bg-dark));
     border-top: 1px solid rgba(255, 15, 47, 0.1);
     border-bottom: 1px solid rgba(255, 15, 47, 0.1);
 }
 
-/* Effet sur le nom principal (H1) */
 .name-gradient {
     background: linear-gradient(45deg, #ffffff, var(--primary-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
 }
-
 /* =========================================
    CARTES & ÉLÉMENTS GRAPHIQUES
    ========================================= */
