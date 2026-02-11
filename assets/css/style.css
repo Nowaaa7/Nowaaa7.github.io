@@ -2,15 +2,15 @@
    VARIABLES & CONFIGURATION GLOBALE
    ========================================= */
    :root {
-    /* --- PALETTE DE COULEURS (MODIFIÉE EN BLEU) --- */
+    /* --- PALETTE DE COULEURS (RETOUR AU ROUGE) --- */
     
-    /* Bleu Roi Principal (Remplace le rouge néon) */
-    --primary-color: #0d6efd; 
+    /* Rouge Néon Principal */
+    --primary-color: #ff0f2f; 
     
-    /* Bleu plus foncé pour les effets de survol */
-    --secondary-color: #0a58ca; 
+    /* Rouge plus foncé pour les effets de survol */
+    --secondary-color: #d0001f; 
     
-    /* Couleurs de fond (Inchangées) */
+    /* Couleurs de fond */
     --bg-dark: #121212;
     --bg-card: #1e1e1e;
     --text-light: #f8f9fa;
@@ -36,16 +36,14 @@ body {
 }
 
 /* =========================================
-   OVERRIDES BOOTSTRAP (Force le bleu partout)
+   OVERRIDES BOOTSTRAP (Force le thème Rouge)
    ========================================= */
-/* Ces règles forcent les éléments rouges de Bootstrap à devenir bleus,
-   évitant de modifier le HTML. */
 
 /* Textes et fonds primaires */
 .text-primary { color: var(--primary-color) !important; }
 .bg-primary { background-color: var(--primary-color) !important; }
 
-/* IMPORTANT : On transforme tout ce qui est "Danger" (Rouge) en Bleu */
+/* On harmonise le "Danger" avec notre rouge néon */
 .text-danger { color: var(--primary-color) !important; }
 .border-danger { border-color: var(--primary-color) !important; }
 
@@ -59,22 +57,12 @@ body {
     border-color: var(--secondary-color) !important;
 }
 
-/* Boutons "Danger" deviennent des boutons bleus */
-.btn-danger {
-    background-color: var(--primary-color) !important;
-    border-color: var(--primary-color) !important;
-    color: white !important;
-}
-.btn-danger:hover {
-    background-color: var(--secondary-color) !important;
-}
-
 /* Boutons Outline (Contours) */
-.btn-outline-primary, .btn-outline-danger {
+.btn-outline-primary {
     color: var(--primary-color) !important;
     border-color: var(--primary-color) !important;
 }
-.btn-outline-primary:hover, .btn-outline-danger:hover {
+.btn-outline-primary:hover {
     background-color: var(--primary-color) !important;
     border-color: var(--primary-color) !important;
     color: #ffffff !important;
@@ -97,8 +85,8 @@ a:hover { color: var(--secondary-color); }
    COMPOSANTS NAVIGATION (Navbar)
    ========================================= */
 #mainNavbar {
-    background: rgba(18, 18, 18, 0.95); /* Fond sombre semi-transparent */
-    backdrop-filter: blur(10px); /* Effet de flou derrière */
+    background: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding: 1rem 0;
     transition: all 0.3s ease;
@@ -107,7 +95,6 @@ a:hover { color: var(--secondary-color); }
     font-weight: 700;
     letter-spacing: 1px;
 }
-/* Le nom dans la navbar devient bleu au survol */
 .navbar-brand:hover { color: var(--primary-color) !important; }
 
 .nav-link {
@@ -117,10 +104,9 @@ a:hover { color: var(--secondary-color); }
     transition: color 0.3s ease;
     position: relative;
 }
-/* Liens actifs ou survolés en bleu */
 .nav-link:hover, .nav-link.active { color: var(--primary-color) !important; }
 
-/* Petite ligne bleue sous le lien actif */
+/* Petite ligne rouge sous le lien actif */
 .nav-link::after {
     content: '';
     position: absolute;
@@ -138,27 +124,26 @@ a:hover { color: var(--secondary-color); }
    ========================================= */
 .hero {
     min-height: 100vh;
-    padding-top: 80px; /* Pour ne pas être caché par la navbar */
+    padding-top: 80px;
     position: relative;
     overflow: hidden;
 }
 
-/* Dégradé de fond principal (Bleu vers Noir) */
+/* Dégradé de fond principal (Rouge vers Noir) */
 .section-gradient {
-    background: linear-gradient(135deg, var(--bg-dark) 0%, rgba(13, 110, 253, 0.1) 100%);
+    background: linear-gradient(135deg, var(--bg-dark) 0%, rgba(255, 15, 47, 0.1) 100%);
 }
 
-/* Dégradé alternatif pour les bannières CTA */
+/* Dégradé alternatif */
 .section-gradient-alt {
-    background: linear-gradient(to right, var(--bg-dark), rgba(13, 110, 253, 0.2), var(--bg-dark));
-    border-top: 1px solid rgba(13, 110, 253, 0.1);
-    border-bottom: 1px solid rgba(13, 110, 253, 0.1);
+    background: linear-gradient(to right, var(--bg-dark), rgba(255, 15, 47, 0.2), var(--bg-dark));
+    border-top: 1px solid rgba(255, 15, 47, 0.1);
+    border-bottom: 1px solid rgba(255, 15, 47, 0.1);
 }
 
 /* Effet sur le nom principal (H1) */
 .name-gradient {
-    /* Dégradé du blanc vers le nouveau bleu */
-    background: linear-gradient(45deg, #ffffff, rgba(13, 110, 253, 0.8));
+    background: linear-gradient(45deg, #ffffff, var(--primary-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
@@ -167,7 +152,6 @@ a:hover { color: var(--secondary-color); }
 /* =========================================
    CARTES & ÉLÉMENTS GRAPHIQUES
    ========================================= */
-/* Cartes standards */
 .card {
     background-color: var(--bg-card);
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -175,7 +159,6 @@ a:hover { color: var(--secondary-color); }
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* Carte de profil (Hero) et Carte sticky (CV) */
 .profile-card, .sticky-card {
     background-color: var(--bg-card);
     border-radius: 15px;
@@ -186,25 +169,23 @@ a:hover { color: var(--secondary-color); }
 }
 .sticky-card { position: sticky; top: 100px; }
 
-/* Image de profil ronde */
+/* Image de profil ronde avec bordure rouge */
 .profile-img {
     width: 130px;
     height: 130px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid var(--primary-color); /* Bordure bleue */
+    border: 3px solid var(--primary-color);
     padding: 3px;
     background-color: var(--bg-card);
 }
 
-/* Effet de survol sur les cartes de base */
 .info-card:hover, .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px -10px rgba(13, 110, 253, 0.1); /* Ombre bleue */
-    border-color: var(--primary-color); /* Bordure bleue au survol */
+    box-shadow: 0 15px 30px -10px rgba(255, 15, 47, 0.1); /* Ombre rouge */
+    border-color: var(--primary-color);
 }
 
-/* Effet spécifique pour les cartes du Portfolio */
 .hover-raise { transition: all 0.3s; border-left: 3px solid transparent; }
 .hover-raise:hover {
     transform: translateY(-5px);
@@ -230,11 +211,11 @@ a:hover { color: var(--secondary-color); }
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: var(--primary-color); /* Point bleu */
-    box-shadow: 0 0 10px var(--primary-color); /* Lueur bleue */
+    background-color: var(--primary-color);
+    box-shadow: 0 0 10px var(--primary-color);
 }
 
-/* Boutons réseaux sociaux (rond) */
+/* Boutons réseaux sociaux */
 .social-btn {
     width: 40px;
     height: 40px;
@@ -250,11 +231,11 @@ a:hover { color: var(--secondary-color); }
 .social-btn:hover {
     background: var(--primary-color);
     color: white;
-    box-shadow: 0 0 15px rgba(13, 110, 253, 0.4);
+    box-shadow: 0 0 15px rgba(255, 15, 47, 0.4);
     transform: translateY(-3px);
 }
 
-/* Tags de compétences (CV) */
+/* Tags de compétences */
 .skill-tag {
     background: rgba(255, 255, 255, 0.05);
     padding: 5px 12px;
@@ -289,7 +270,7 @@ a:hover { color: var(--secondary-color); }
     z-index: 99;
     border: none;
     outline: none;
-    background-color: var(--primary-color); /* Fond bleu */
+    background-color: var(--primary-color);
     color: white;
     cursor: pointer;
     padding: 10px 15px;
@@ -303,12 +284,11 @@ a:hover { color: var(--secondary-color); }
     transform: translateY(-3px);
 }
 
-/* Utilitaires d'espacement */
 .mt-5 { margin-top: 5rem !important; }
 .py-5 { padding-top: 5rem !important; padding-bottom: 5rem !important; }
 
 /* =========================================
-   ANIMATIONS DE DÉFILEMENT (Scroll Reveal)
+   ANIMATIONS
    ========================================= */
 .reveal {
     opacity: 0;
@@ -319,16 +299,14 @@ a:hover { color: var(--secondary-color); }
     opacity: 1;
     transform: translateY(0);
 }
-/* Délais pour l'effet "cascade" */
 .delay-1 { transition-delay: 0.2s; }
 .delay-2 { transition-delay: 0.4s; }
 .delay-3 { transition-delay: 0.6s; }
 
 /* =========================================
-   RESPONSIVE (Adaptation Mobile)
+   RESPONSIVE
    ========================================= */
 @media (max-width: 991px) {
-    /* Sur mobile, la navbar devient un bloc uni */
     #mainNavbar { background: var(--bg-card); }
     .navbar-collapse {
         padding-top: 1rem;
@@ -336,9 +314,7 @@ a:hover { color: var(--secondary-color); }
         border-radius: 0 0 15px 15px;
     }
     .nav-link { margin: 0.5rem 0; }
-    /* Centre les boutons sur mobile */
     .navbar-nav .btn { width: 100%; margin: 0.5rem 0 !important; text-align: center; }
-    
     .hero { text-align: center; padding-top: 120px; }
     .hero h1 { font-size: 2.5rem; }
     .profile-card { margin-top: 3rem; }
@@ -347,14 +323,11 @@ a:hover { color: var(--secondary-color); }
 /* =========================================
    STYLE D'IMPRESSION (CTRL + P)
    ========================================= */
-/* Pour imprimer proprement sur papier blanc */
 @media print {
-    /* On cache les éléments inutiles sur papier */
     #mainNavbar, #backToTop, .btn, footer, .sticky-card img, .social-btn {
         display: none !important;
     }
 
-    /* On passe en mode "Papier" (Fond blanc, texte noir) */
     body, .card, .timeline-item, main, .sticky-card {
         background: white !important;
         color: black !important;
@@ -362,30 +335,24 @@ a:hover { color: var(--secondary-color); }
         border: none !important;
     }
 
-    /* Liens noirs, sans soulignement */
     a { text-decoration: none !important; color: black !important; }
     
-    /* Reset des marges */
     .container, .py-5, .mt-5 {
         width: 100% !important; max-width: 100% !important;
         margin: 0 !important; padding: 1rem 0 !important;
     }
     
-    /* Force la couleur BLEUE pour les titres importants à l'impression */
     h1, h2, h3, h4, h5, .text-primary, .navbar-brand, strong.text-white {
         color: var(--primary-color) !important;
     }
-    /* Force les textes clairs à devenir noirs */
     .text-light, .text-muted, small, p {
         color: #000 !important;
     }
     
-    /* Force l'affichage en 2 colonnes sur le CV papier */
     .row { display: flex !important; flex-wrap: nowrap !important; }
     .col-lg-4 { width: 32% !important; margin-right: 3%; }
     .col-lg-8 { width: 65% !important; }
 
-    /* Ajustements visuels pour le papier */
     .timeline-item { border-left-color: #ccc !important; }
     .card, .sticky-card { border: 1px solid #eee !important; }
     hr { border-color: #ccc !important; }
